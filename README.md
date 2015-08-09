@@ -10,3 +10,4 @@ neu php-study 是为NEUer 学习PHP创建的一个简单的类似论坛的项目
   使用命令`git clone https://github.com/gamelife1314/php-study.git`直接安装，然后配置项目
   
   git学习网站[点击进入](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+3.作者赵思洋
