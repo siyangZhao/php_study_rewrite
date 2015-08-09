@@ -1,0 +1,21 @@
+{
+    "name": "gamelife/php-study",
+    "description": "a simple php-study bbs",
+    "keywords":["php-study","phpBBS"],
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "gamelife",
+            "email": "1185694600@qq.com"
+        }
+    ],
+    "require": {
+    	"php": ">=5.4",
+        "phpmailer/phpmailer": "^5.2"
+    },
+     "config": {
+        "preferred-install": "dist"
+    },
+    "autoload":{}
+}

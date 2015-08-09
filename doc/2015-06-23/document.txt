@@ -1,0 +1,13 @@
+Date:2015-06-23 0:47
+Author:gamelife
+Description:注册添加邮箱验证码
+
+使用说明如下：
+	此次不用导入数据表，但是需要配置你的邮件服务器，配置文件 /config/email.php,配置说明
+	return [
+		'host' => 'smtp.qq.com',  		//使用QQ邮箱的话，可以不用改
+		'port' => 25,             		//端口不用改
+		'user' => '1185694600@qq.com',  //填写你的邮箱账号后者用户名
+		'pass' => 'my_password',        // 你的邮箱密码
+		'from' => '1185694600@qq.com'   // 如果是QQ邮箱，和用户名一致
+		]; 

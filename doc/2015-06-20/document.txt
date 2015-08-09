@@ -1,0 +1,16 @@
+Date:2015-06-20 22:40
+Author:gamelife
+Description:读帖，发帖，浏览模块
+
+此次更新添加或修改了一下文件；
+			public/app/css/app.css
+			index.php
+			post_article.php
+			read_article.php
+			user.php
+可以重新安装或者替换添加以上文件；
+
+新建了articles 数据表，数据表已经到处；
+
+
+重新安装之后正确配置数据库；
