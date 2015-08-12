@@ -31,6 +31,7 @@ if (!($aid == ''))
                                         [
                                           'article.id' => $_GET['aid']
                                         ])[0];
+    $_SESSION['article'] = $article;
   
 } else {
 	$_SESSION['errors']['state'] = 'am-alert-warning';
@@ -98,10 +99,20 @@ if($_POST)
 					   		<pre class="php-text-indent"><?php echo $article['content']; ?></pre><!--按排版原样输出-->                            
 					   		<p class="php-text-gray am-margin-xs">
 					   			<a href="<?php echo $host_url; ?>user.php?uid=<?php echo $article['user_id']; ?>"><?php echo $article['name']; ?></a>
-                                &nbsp;于&nbsp;<?php echo $article['created_at']; ?>&nbsp;时发布
-					   		</p>
-                            <div class="am-panel-bd am-text-left topic-body" id="topic" >
-                                       
+                                &nbsp;于&nbsp;<?php echo $article['created_at']; ?>&nbsp;时发布                           
+                                <?php
+                                    if(isset($_SESSION['user'])&&($_SESSION['user']['name'] == $article['name'])){
+                                    ?>
+                                <div class="am-u-lg-12 am-u-md-4 am-u-sm-12 am-text-right" required style="display:inline-block">
+                                    <a class="am-btn am-btn-primary am-radius am-text-sm" href="<?php echo $host_url; ?>update_article.php">
+                                    <i class="am-icon-eyedropper"></i>&nbsp;修改帖子
+                                    </a>
+                                </div>
+                                    <?php
+                                    }
+                                ?>
+                            </p>
+                            <div class="am-panel-bd am-text-left topic-body" id="topic" >                                       
                             <?php
                                 if($article['stick'] == 'true'){
                                 ?>                        
