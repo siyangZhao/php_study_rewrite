@@ -11,10 +11,10 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
   <link rel="icon" type="image/x-icon" href="./public/images/app.ico">
-  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <link rel="apple-touch-icon-precomposed" href="public/amaze/i/app-icon72x72@2x.png">
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
-  <link rel="stylesheet" href="assets/css/admin.css">
+  <link rel="stylesheet" href="public/amaze/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="public/amaze/css/admin.css">
 </head>
 <?php
 	include './includes/functions.php';
@@ -252,27 +252,27 @@
                 <th>访问量</th>
               </tr>
               <tr>
-                <td class="am-text-center"><img src="assets/i/examples/admin-chrome.png" alt=""></td>
+                <td class="am-text-center"><img src="public/amaze/i/examples/admin-chrome.png" alt=""></td>
                 <td>Google Chrome</td>
                 <td>3,005</td>
               </tr>
               <tr>
-                <td class="am-text-center"><img src="assets/i/examples/admin-firefox.png" alt=""></td>
+                <td class="am-text-center"><img src="public/amaze/i/examples/admin-firefox.png" alt=""></td>
                 <td>Mozilla Firefox</td>
                 <td>2,505</td>
               </tr>
               <tr>
-                <td class="am-text-center"><img src="assets/i/examples/admin-ie.png" alt=""></td>
+                <td class="am-text-center"><img src="public/amaze/i/examples/admin-ie.png" alt=""></td>
                 <td>Internet Explorer</td>
                 <td>1,405</td>
               </tr>
               <tr>
-                <td class="am-text-center"><img src="assets/i/examples/admin-opera.png" alt=""></td>
+                <td class="am-text-center"><img src="public/amaze/i/examples/admin-opera.png" alt=""></td>
                 <td>Opera</td>
                 <td>4,005</td>
               </tr>
               <tr>
-                <td class="am-text-center"><img src="assets/i/examples/admin-safari.png" alt=""></td>
+                <td class="am-text-center"><img src="public/amaze/i/examples/admin-safari.png" alt=""></td>
                 <td>Safari</td>
                 <td>505</td>
               </tr>
@@ -376,21 +376,21 @@
   <span class="am-icon-btn am-icon-th-list"></span>
 </a>
 
-<footer>
-  <hr>
-  <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+<footer class="php-footer">
+  <p>© 2015 <a href="index.php" target="_blank">NEU PHP学习.</a> Licensed under <a
+      href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>. by  xiaoxi.</p>
 </footer>
 
 <!--[if lt IE 9]>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<script src="public/amaze/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="assets/js/jquery.min.js"></script>
+<script src="public/amaze/js/jquery.min.js"></script>
 <!--<![endif]-->
-<script src="assets/js/amazeui.min.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="public/amaze/js/amazeui.min.js"></script>
+<script src="public/amaze/js/app.js"></script>
 </body>
 </html>
