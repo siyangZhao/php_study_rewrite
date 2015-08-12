@@ -106,6 +106,12 @@
 		}	
 		
 	}
+	if (isset($_SESSION['user'])){
+        $_SESSION['errors']['state'] = 'am-alert-warning';
+        $_SESSION['errors']['details'] = ['您已经登录，无需重复操作'];
+        header("Location:{$host_url}index.php");
+        exit;
+    }
 ?>
 <body>  <!--<div> 是一个块级元素。这意味着它的内容自动地开始一个新行。实际上，换行是 <div> 固有的唯一格式表现。可以通过 <div> 的 class 或 id 应用额外的样式-->
         <!--class 用于元素组（类似的元素，或者可以理解为某一类元素），而 id 用于标识单独的唯一的元素-->

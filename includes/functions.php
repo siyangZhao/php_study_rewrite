@@ -14,7 +14,8 @@ if (! function_exists('host_url'))
 	{
 		if (isset($_SERVER['REQUEST_SCHEME']))
 		{
-			return $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/php-study-rewrite/';
+			//return $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/php-study-rewrite/';
+			return './';
 		} else {
 			return 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/';
 		}
