@@ -14,21 +14,32 @@
     $articlenum = 2;//每页显示帖子数
 
     $count = $medoo->count('article',[
+                                        "[>]users"  =>  ['article.user_id'  => 'id'],
+                                     ],
+                                     [
+                                        'article.id',
+                                     ],
+                                     [
                                       'AND' =>  [
                                                     'pass'  =>  'true',
-                                                    'title[~]' => $search,
+                                                    'OR' => [                   
+                                                                'article.title[~]' => $search,
+                                                                'article.content[~]' => $search,
+                                                                'users.name[~]' => $search,
+                                                            ],
                                                 ],
-                                     ]);//该分类下帖子总数
+                                     ]);
 
     $pagenum = ceil($count / $articlenum);//向下取整，每个分类下的页数
    
   
-    $search_result = $medoo -> select('article', [
+    $search_result = $medoo -> select('article',    [
                                                         "[>]users"  =>  ['article.user_id'  => 'id'],  //关联条件：article.user_id=users.id
                                                         "[>]class"  =>  ['article.class_id' => 'id'],  //          article.class_id=class.id
                                                     ],
                                                     [   'article.id',                //查询结果
                                                         'article.title',
+                                                        'article.content',
                                                         'article.created_at',
                                                         'article.user_id',
                                                         'article.class_id',
@@ -37,8 +48,12 @@
                                                     ],
                                                     [  //查询条件
                                                         'AND'   => [
-                                                                    'pass'  =>  'true',                    //查询条件
-                                                                    'title[~]' => $search,
+                                                                    'pass'  =>  'true', 
+                                                                    'OR' => [                   //查询条件
+                                                                                'title[~]' => $search,
+                                                                                'content[~]' => $search,
+                                                                                'users.name[~]' => $search,
+                                                                            ],
                                                                     ],
                                                         'ORDER' =>  ['created_at DESC'],//按时间倒叙排列                   
                                                         'LIMIT' =>  [($request_page - 1) * $articlenum, $articlenum]                                    

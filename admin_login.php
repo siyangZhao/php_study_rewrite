@@ -25,7 +25,8 @@
                                                             'email' => $name,
                                                             'mobile' => $name,
                                                         ],
-                                                        'password' => $password
+                                                        'password' => $password,
+                                                        'level' => 'admin',
                                                      ]
                                            ]);
         
@@ -34,11 +35,11 @@
                 $_SESSION['user'] = $user[0];
                 $_SESSION['errors']['state'] = 'am-alert-success';
                 $_SESSION['errors']['details'] = ['欢迎登录本站！'];
-                header("Location:{$host_url}index.php");
+                header("Location:{$host_url}admin.php");
                 exit;
             } else {
                 $_SESSION['errors']['state'] = 'am-alert-warning';
-                $_SESSION['errors']['details'] = ['用户名和密码不匹配'];
+                $_SESSION['errors']['details'] = ['用户名和密码不匹配或没有权限进入管理页面'];
             }
         } else {
 
@@ -47,13 +48,7 @@
                 $_SESSION['errors']['details'] = ['您提交的验证码有误或者您的验证码已经失效']; 
         }           
     }
-
-    if (isset($_SESSION['user'])){
-        $_SESSION['errors']['state'] = 'am-alert-warning';
-        $_SESSION['errors']['details'] = ['您已经登录，无需重复操作'];
-        header("Location:{$host_url}index.php");
-        exit;
-    }
+    
 ?>
 
 <body>
@@ -61,7 +56,7 @@
         <div class="am-g am-container php-bg-white  php-box-shadow">
             <?php include './includes/error.php';?>
             <div class="am-u-lg-offset-2 am-u-md-offset-2 am-u-md-8 am-u-lg-8 am-u-sm-12  am-padding-top am-margin-top-xl ">
-                 <form action="<?php echo $host_url."login.php"; ?>" class="am-form am-form-horizontal" method="post">
+                 <form action="<?php echo $host_url."admin_login.php"; ?>" class="am-form am-form-horizontal" method="post">
                     <div class="am-form-group am-form-icon">
                             <label for="doc-ipt-3" class="am-u-sm-2 am-form-label">用户名：</label>
                             <div class="am-u-sm-10">
@@ -86,13 +81,7 @@
                         </div>              
                         <div class="am-form-group ">
                             <div class="am-u-sm-offset-2 am-u-sm-10">
-                                <button type="submit" class="am-btn am-btn-primary am-radius php-button">登录</button>                                
-                                <span class="am-text-xs">  <a href="<?php echo $host_url; ?>reset_password.php">忘记密码？</a></span>
-                                <p class="am-text-xs">
-                                    <span class="php-text-gray">
-                                        还没有账号？这就去<a href="<?php echo $host_url; ?>regist.php">注册</a>
-                                    </span>                  
-                                </p>
+                                <button type="submit" class="am-btn am-btn-primary am-radius php-button">登录</button>                                                           
                             </div>
                         </div>
                  </form>
