@@ -18,8 +18,10 @@ if ($_POST)
 
 	$title = handle_illegal_string($_POST['title']);
 	$type = $_POST['type'];
-	$content =  handle_illegal_string($_POST['content']);
+	$content0 =  handle_illegal_string($_POST['content']);
+	$content = htmlspecialchars($content0);
     $class = $medoo->select('class','*',['name'=>$type]);
+    $pass = $_POST['pass'];
     
 
     if(count($class))
@@ -31,7 +33,7 @@ if ($_POST)
 
 	if (strlen($content) > 10)
 	{
-		if ($medoo->insert('article',['title' => $title, 'content' => $content, 'user_id' => $_SESSION['user']['id'], 'class_id' => $_SESSION['class']['id'],  'created_at' => date('Y-m-d H:i:s')]))
+		if ($medoo->insert('article',['title' => $title, 'content' => $content, 'user_id' => $_SESSION['user']['id'], 'class_id' => $_SESSION['class']['id'],  'created_at' => date('Y-m-d H:i:s'), 'pass' => $pass]))
 		{
 			$_SESSION['errors']['state'] = 'am-alert-success';
 		    $_SESSION['errors']['details'] = ['发帖成功啦！'];
@@ -77,7 +79,8 @@ if ($_POST)
 				        <label for="doc-ta-1">内容：</label>
 				        <textarea class="am-text-sm am-radius php-textarea" rows="5" name="content"><?php echo session_read_post('content'); ?></textarea>
 				    </div>
-				    <p><button type="submit" class="am-btn am-btn-primary am-radius am-text-sm">发布</button></p>
+				    <input type="radio" name="pass" value="false">其他人不可见
+				    <p><button type="submit" class="am-btn am-btn-primary am-radius am-text-sm">发布</button></p>				    
 				</form> 
 			</div> 
 			<div class="am-u-lg-1 am-u-md-1"></div>
