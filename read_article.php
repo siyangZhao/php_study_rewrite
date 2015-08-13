@@ -66,7 +66,8 @@ if($_POST)
         exit;
     }
         
-        $comment =  isset($_POST['comment']) ? handle_illegal_string($_POST['comment']) : '';
+        $comment0 =  isset($_POST['comment']) ? handle_illegal_string($_POST['comment']) : '';
+        $comment = htmlspecialchars($comment0);
 
         if ($medoo->insert('comment',['content' => $comment, 'user_id' => $_SESSION['user']['id'], 'article_id' => $article['id'],  'created_at' => date('Y-m-d H:i:s')]))
         {
