@@ -1,6 +1,7 @@
-<?php include './includes/functions.php';
-	  $host_url = host_url();
+<?php include './includes/functions.php';	
+	  $host_url = host_url();	
 ?>
+
 <header class="am-topbar am-topbar-fixed-top php-topbar-inverse">
      	<div class="am-g am-g-fixed">
 		    <div class="am-u-lg-12 am-u-md-12 am-u-sm-12">
@@ -22,7 +23,7 @@
    				<div class="am-collapse am-topbar-collapse" id="collapse-head">
 					    <div class="am-topbar-right">
 					     	  <?php 
-					     	  	if (!isset($_SESSION['user']))
+					     	  	if (!(isset($_SESSION['user'])))
 					     	  	{
 					     	  		?>
 					     	  		<button class="am-btn am-btn-primary am-topbar-btn am-btn-sm am-radius" onclick="window.location.href='<?php echo $host_url;  ?>login.php'">

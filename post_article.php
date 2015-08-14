@@ -21,7 +21,7 @@ if ($_POST)
 	$content0 =  handle_illegal_string($_POST['content']);
 	$content = htmlspecialchars($content0);
     $class = $medoo->select('class','*',['name'=>$type]);
-    $pass = $_POST['pass'];
+    $pass = isset($_POST['pass']) ? $_POST['pass'] : 'true';
     
 
     if(count($class))
@@ -78,8 +78,8 @@ if ($_POST)
 				    <div class="am-form-group">
 				        <label for="doc-ta-1">内容：</label>
 				        <textarea class="am-text-sm am-radius php-textarea" rows="5" name="content"><?php echo session_read_post('content'); ?></textarea>
-				    </div>
-				    <input type="radio" name="pass" value="false">其他人不可见
+				    </div>				    
+        			<input type="checkbox" name="pass" value="false"> 其他人不可见
 				    <p><button type="submit" class="am-btn am-btn-primary am-radius am-text-sm">发布</button></p>				    
 				</form> 
 			</div> 

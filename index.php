@@ -3,11 +3,33 @@
     include './includes/functions.php';
     $host_url = host_url();
 
+    
+
     $database_config = require __DIR__.'/config/database.php';
     require_once __DIR__.'/lib/Medoo.class.php';
 
     $medoo = @new Medoo($database_config);
     $medoo->query('set names utf8');
+
+
+    if(!empty($_COOKIE['username'])){
+        $name = $_COOKIE['username'];
+        $user = $medoo->select('users','*',
+                                               [
+                                                  
+                                                            'OR' =>
+                                                            [
+                                                                'name' => $name,
+                                                                'email' => $name,
+                                                                'mobile' => $name,
+                                                            ],
+                                                            
+                                               ]);
+        if (count($user)) {
+                            $_SESSION['user'] = $user[0];
+                            
+                        }
+    }
 
     $class_id = isset($_GET['class_id']) ? $_GET['class_id'] : 0;//分类的id
     $request_page = isset( $_GET['page'])  ? $_GET['page']  : 1;//当前所在页数
