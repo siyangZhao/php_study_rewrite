@@ -14,6 +14,7 @@
 
             $name = trim($_POST['name']);
             $password = md5(trim($_POST['password']));
+            $remenber = isset($_POST['remember']) ? $_POST['remember'] : '';
 
             $user = $medoo->select('users','*',
                                            [
@@ -32,6 +33,9 @@
             $medoo = null;
             if (count($user)) {
                 $_SESSION['user'] = $user[0];
+                if($remenber){
+                                setcookie("username", $name, time()+3600*24*30);
+                           }                                    
                 $_SESSION['errors']['state'] = 'am-alert-success';
                 $_SESSION['errors']['details'] = ['欢迎登录本站！'];
                 header("Location:{$host_url}index.php");
@@ -83,7 +87,12 @@
                                 <input type="text" name="verifycode" placeholder="验证码" class="php-input am-radius" required style="width:70%;display:inline-block">
                                 <img id="js-get-verify-code"  src="verifycode.php" style="display:inline-block;cursor:pointer">                         
                             </div>
-                        </div>              
+                        </div> 
+                        <div class="am-form-group ">
+                            <div class="am-u-sm-offset-2 am-u-sm-10">
+                                <input type="checkbox" name="remember" value="true"> 下次自动登录
+                            </div>
+                        </div>             
                         <div class="am-form-group ">
                             <div class="am-u-sm-offset-2 am-u-sm-10">
                                 <button type="submit" class="am-btn am-btn-primary am-radius php-button">登录</button>                                

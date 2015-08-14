@@ -8,13 +8,10 @@
         {
             $database_config = require __DIR__.'/config/database.php';
             require_once __DIR__.'/lib/Medoo.class.php';
-
             $medoo = @new Medoo($database_config);
             $medoo->query('set names utf8');
-
             $name = trim($_POST['name']);
             $password = md5(trim($_POST['password']));
-
             $user = $medoo->select('users','*',
                                            [
                                               'AND' => 
@@ -34,7 +31,7 @@
             if (count($user)) {
                 $_SESSION['user'] = $user[0];
                 $_SESSION['errors']['state'] = 'am-alert-success';
-                $_SESSION['errors']['details'] = ['欢迎登录本站！'];
+                $_SESSION['errors']['details'] = ['欢迎登录后台管理页面！'];
                 header("Location:{$host_url}admin.php");
                 exit;
             } else {
@@ -42,7 +39,6 @@
                 $_SESSION['errors']['details'] = ['用户名和密码不匹配或没有权限进入管理页面'];
             }
         } else {
-
                 $_SESSION['post']['name'] = $_POST['name'];                
                 $_SESSION['errors']['state'] = 'am-alert-warning';
                 $_SESSION['errors']['details'] = ['您提交的验证码有误或者您的验证码已经失效']; 
